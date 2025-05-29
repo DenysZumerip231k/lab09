@@ -1,0 +1,34 @@
+// Просте функціональне логування з рівнями
+const LogLevel = {
+  INFO: "INFO",
+  WARN: "WARN",
+  ERROR: "ERROR",
+};
+
+function log(level, message) {
+  const time = new Date().toISOString();
+  console.log(`[${time}] [${level}] ${message}`);
+
+  // Імітація відправки логів в аналітику
+  sendToAnalytics({ level, message, time });
+}
+
+// Підключення до аналітики (імітація)
+function connectAnalytics() {
+  log(LogLevel.INFO, "Підключення до аналітики...");
+  // Тут могла бути ініціалізація реального SDK
+  log(LogLevel.INFO, "Аналітика підключена!");
+}
+
+// Імітація відправки даних у аналітику
+function sendToAnalytics(data) {
+  // Просто виводимо в консоль, що відправляємо дані
+  console.log("[ANALYTICS] Відправляємо подію:", data);
+}
+
+// Приклад роботи
+connectAnalytics();
+
+log(LogLevel.INFO, "Програма стартувала");
+log(LogLevel.WARN, "Це попередження");
+log(LogLevel.ERROR, "Сталася помилка");

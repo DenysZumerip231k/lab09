@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Простий приклад GA4</title>
+  <!-- Підключаємо офіційний скрипт GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    
+    gtag('js', new Date());
+
+    // Встав свій ID з GA4 тут:
+    gtag('config', 'G-XXXXXXXXXX');
+
+    // Просте логування з відправкою подій
+    function log(level, message) {
+      console.log(`[${level}] ${message}`);
+      gtag('event', 'log_event', {
+        level: level,
+        message: message,
+      });
+    }
+  </script>
+</head>
+<body>
+  <script>
+    log('INFO', 'Програма стартувала');
+    log('WARN', 'Це попередження');
+    log('ERROR', 'Сталася помилка');
+  </script>
+</body>
+</html>
